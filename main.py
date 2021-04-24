@@ -8,7 +8,7 @@ QDialog {background-color:  #eee;}
 QTableWidget {border-color:  #999;}
 QTableWidget::item {selection-background-color:  #6fb2dc;}
 QPushButton {background-color: #fff; padding: 4px 10px 4px 10px; color: #333;}
-QToolButton {background-color: #fff; padding: 6px 6px 6px 6px; color: #333;}
+QToolButton {background-color: #fff; padding: 6px; color: #333;}
 QLineEdit {padding: 6px;}"""
 
 if __name__ == '__main__':
