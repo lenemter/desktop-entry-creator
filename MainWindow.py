@@ -30,6 +30,7 @@ class MainWindow(QMainWindow):
             try:
                 file = open(filepath, 'w')
                 file.writelines(["[Desktop Entry]\n",
+                                 f"Encoding=UTF-8\n"
                                  f"Name={name}\n",
                                  f"Comment={comment}\n",
                                  f"Icon={icon}\n",
