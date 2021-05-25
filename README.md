@@ -2,4 +2,4 @@
 
 Linux application for creating desktop entries
 
-![img_1.png](img.png)
+![img.png](img.png)
