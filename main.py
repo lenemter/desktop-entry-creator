@@ -1,22 +1,17 @@
 from MainWindow import MainWindow
 from PyQt5.QtWidgets import QApplication
 import sys
-
-# PyInstaller can't get styles from file
-styles = """#container {background-color: #eee;}
-QDialog {background-color:  #eee;}
-QTableWidget {border-color:  #999;}
-QTableWidget::item {selection-background-color:  #6fb2dc;}
-QPushButton {background-color: #fff; padding: 4px 10px 4px 10px; color: #333;}
-QToolButton {background-color: #fff; padding: 6px; color: #333;}
-QLineEdit {padding: 6px;}"""
+import platform
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
-    app.setStyleSheet(styles)
     main_window = MainWindow()
 
     main_window.show()
+    if platform.system() != "Linux":
+        main_window.show_error("Not Linux")
+        main_window.close()
+        sys.exit()
     app.exec_()
     sys.exit()

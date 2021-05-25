@@ -1,5 +1,5 @@
-# Desktop entry creator
+# Desktop Entry Creator
 
 Linux application for creating desktop entries
 
-![img.png](img.png)
+![img_1.png](img.png)

@@ -6,109 +6,223 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>478</width>
-    <height>258</height>
+    <width>550</width>
+    <height>380</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>450</width>
+    <height>380</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>380</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Desktop Entry Creator</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">* {
+	color: #333;
+}
+
+QMainWindow {
+	background-color: #eee;
+}
+
+QPushButton {
+    padding: 6.5px 12px;
+    border-radius: 4px;
+	background-color: #fff;
+    border: 1px solid #bbb;
+}
+
+#icon_button, #command_button {
+	padding: 8px 6px;
+}
+
+QLineEdit {
+	padding: 6px;
+	border-radius: 5px;
+    border: 1px solid #bbb;
+}</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="central_widget">
    <layout class="QVBoxLayout" name="verticalLayout">
-    <property name="spacing">
-     <number>10</number>
-    </property>
-    <property name="leftMargin">
-     <number>10</number>
-    </property>
-    <property name="topMargin">
-     <number>10</number>
-    </property>
-    <property name="rightMargin">
-     <number>10</number>
-    </property>
-    <property name="bottomMargin">
-     <number>10</number>
-    </property>
     <item>
-     <layout class="QGridLayout" name="gridLayout">
-      <property name="spacing">
-       <number>14</number>
-      </property>
-      <item row="0" column="0">
-       <widget class="QLabel" name="nameLabel">
+     <layout class="QHBoxLayout" name="name_container">
+      <item>
+       <widget class="QLabel" name="name_lable">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
-         <string>Name</string>
+         <string>Name:</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="commentLabel">
-        <property name="text">
-         <string>Comment</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="nameLineEdit"/>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="commentLineEdit"/>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="commandLineEdit"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="iconLabel">
-        <property name="text">
-         <string>Icon</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="commandLabel">
-        <property name="text">
-         <string>Command</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <layout class="QHBoxLayout" name="iconHorizontalLayout">
-        <property name="spacing">
-         <number>10</number>
-        </property>
-        <item>
-         <widget class="QLineEdit" name="iconLineEdit">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="iconButton">
-          <property name="text">
-           <string>...</string>
-          </property>
-          <property name="icon">
-           <iconset theme="document-open">
-            <normaloff>.</normaloff>.</iconset>
-          </property>
-         </widget>
-        </item>
-       </layout>
+      <item>
+       <widget class="QLineEdit" name="name_lineEdit"/>
       </item>
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="submitHorizontalLayout">
+     <layout class="QHBoxLayout" name="comment_container">
       <item>
-       <spacer name="horizontalSpacer">
+       <widget class="QLabel" name="comment_lable">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Comment:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="comment_lineEdit"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="icon_container">
+      <item>
+       <widget class="QLabel" name="icon_label">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Icon:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="icon_lineEdit"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="icon_button">
+        <property name="icon">
+         <iconset theme="document-open">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="command_container">
+      <item>
+       <widget class="QLabel" name="command_label">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Command:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="command_lineEdit"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="command_button">
+        <property name="icon">
+         <iconset theme="document-open">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="categories_container">
+      <item>
+       <widget class="QLabel" name="categories_label">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Categories:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="categories_lineEdit"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="launch_in_terminal_checkBox">
+      <property name="text">
+       <string>Launch in terminal</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="send_notification_checkBox">
+      <property name="text">
+       <string>Send notification on startup</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="submit_button_container">
+      <item>
+       <spacer name="horizontal_spacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -121,13 +235,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="submitButton">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+       <widget class="QPushButton" name="create_button">
         <property name="text">
          <string>Create</string>
         </property>
