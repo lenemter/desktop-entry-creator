@@ -31,16 +31,20 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QPushButton {\n"
+"    padding: 6.5px 12px;\n"
+"    border-radius: 4px;\n"
 "    background-color: #fff;\n"
-"    padding: 6px 16px;\n"
+"    border: 1px solid #bbb;\n"
 "}\n"
 "\n"
 "#icon_button, #command_button {\n"
-"    padding: 9px 8px;\n"
+"    padding: 8px 6px;\n"
 "}\n"
 "\n"
 "QLineEdit {\n"
 "    padding: 6px;\n"
+"    border-radius: 5px;\n"
+"    border: 1px solid #bbb;\n"
 "}")
         self.central_widget = QtWidgets.QWidget(MainWindow)
         self.central_widget.setObjectName("central_widget")

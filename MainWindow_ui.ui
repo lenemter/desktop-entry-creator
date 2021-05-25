@@ -41,16 +41,20 @@ QMainWindow {
 }
 
 QPushButton {
+    padding: 6.5px 12px;
+    border-radius: 4px;
 	background-color: #fff;
-	padding: 6px 16px;
+    border: 1px solid #bbb;
 }
 
 #icon_button, #command_button {
-	padding: 9px 8px;
+	padding: 8px 6px;
 }
 
 QLineEdit {
 	padding: 6px;
+	border-radius: 5px;
+    border: 1px solid #bbb;
 }</string>
   </property>
   <widget class="QWidget" name="central_widget">

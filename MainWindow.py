@@ -1,5 +1,3 @@
-import platform
-
 from MainWindow_ui import Ui_MainWindow
 from PyQt5.QtWidgets import QMainWindow, QMessageBox, QFileDialog
 from pathlib import Path
@@ -14,10 +12,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.icon_button.pressed.connect(self.open_icon)
         self.command_button.pressed.connect(self.open_command)
         self.create_button.pressed.connect(self.create_file)
-
-        if platform.system() != "Linux":
-            self.show_error("Not Linux")
-            self.close()
 
     def create_file(self):
         name = self.name_lineEdit.text()
