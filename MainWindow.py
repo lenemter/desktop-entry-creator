@@ -26,27 +26,30 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if not (name and command):
             self.show_error("Name or Command field is empty")
         elif isfile(filepath):
-            self.show_error(f"{filepath} already exists")
-        else:
-            if "~/" in command:
-                if self.ask_question('Replace "~/"?', f'Replace "~/" to "{str(Path.home())}/" in the command?'):
-                    command.replace("~/", str(Path.home()) + "/")  # replace "~/" to home directory path
-            try:
-                file = open(filepath, 'w')
-                file.writelines(["[Desktop Entry]\n",
-                                 f"Name={name}\n",
-                                 f"Comment={comment}\n",
-                                 f"Icon={icon}\n",
-                                 f"Exec={command}\n",
-                                 f"Categories={categories}\n"
-                                 f"Terminal={str(launch_in_terminal).lower()}\n"
-                                 f"StartupNotify={str(send_notification).lower()}\n"
-                                 "Type=Application"])
-            except Exception as exception:
-                self.show_error(str(exception))
+            if self.ask_question("Replace file?", f"{filepath} already exists. Replace it?"):
+                pass
             else:
-                self.show_message("Success", "Success")
-                self.clear_line_edits()
+                return None
+
+        if "~/" in command:
+            if self.ask_question('Replace "~/"?', f'Replace "~/" to "{str(Path.home())}/" in the command?'):
+                command.replace("~/", str(Path.home()) + "/")  # replace "~/" to home directory path
+        try:
+            file = open(filepath, 'w')
+            file.writelines(["[Desktop Entry]\n",
+                             f"Name={name}\n",
+                             f"Comment={comment}\n",
+                             f"Icon={icon}\n",
+                             f"Exec={command}\n",
+                             f"Categories={categories}\n"
+                             f"Terminal={str(launch_in_terminal).lower()}\n"
+                             f"StartupNotify={str(send_notification).lower()}\n"
+                             "Type=Application"])
+        except Exception as exception:
+            self.show_error(str(exception))
+        else:
+            self.show_message("Success", "Success")
+            self.clear_line_edits()
 
     def open_icon(self):
         filename, _ = QFileDialog.getOpenFileName(self, "Select icon")
