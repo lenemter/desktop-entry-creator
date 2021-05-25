@@ -1,3 +1,5 @@
+import platform
+
 from MainWindow_ui import Ui_MainWindow
 from PyQt5.QtWidgets import QMainWindow, QMessageBox, QFileDialog
 from pathlib import Path
@@ -13,6 +15,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.command_button.pressed.connect(self.open_command)
         self.create_button.pressed.connect(self.create_file)
 
+        if platform.system() != "Linux":
+            self.show_error("Not Linux")
+            self.close()
+
     def create_file(self):
         name = self.name_lineEdit.text()
         comment = self.comment_lineEdit.text()
@@ -25,31 +31,29 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         if not (name and command):
             self.show_error("Name or Command field is empty")
-        elif isfile(filepath):
-            if self.ask_question("Replace file?", f"{filepath} already exists. Replace it?"):
-                pass
-            else:
-                return None
-
-        if "~/" in command:
-            if self.ask_question('Replace "~/"?', f'Replace "~/" to "{str(Path.home())}/" in the command?'):
-                command.replace("~/", str(Path.home()) + "/")  # replace "~/" to home directory path
-        try:
-            file = open(filepath, 'w')
-            file.writelines(["[Desktop Entry]\n",
-                             f"Name={name}\n",
-                             f"Comment={comment}\n",
-                             f"Icon={icon}\n",
-                             f"Exec={command}\n",
-                             f"Categories={categories}\n"
-                             f"Terminal={str(launch_in_terminal).lower()}\n"
-                             f"StartupNotify={str(send_notification).lower()}\n"
-                             "Type=Application"])
-        except Exception as exception:
-            self.show_error(str(exception))
         else:
-            self.show_message("Success", "Success")
-            self.clear_line_edits()
+            if isfile(filepath):
+                if not self.ask_question("Replace file?", f"{filepath} already exists. Replace it?"):
+                    return None
+            if "~/" in command:
+                if self.ask_question('Replace "~/"?', f'Replace "~/" to "{str(Path.home())}/" in the command?'):
+                    command.replace("~/", str(Path.home()) + "/")  # replace "~/" to home directory path
+            try:
+                file = open(filepath, 'w')
+                file.writelines(["[Desktop Entry]\n",
+                                 f"Name={name}\n",
+                                 f"Comment={comment}\n",
+                                 f"Icon={icon}\n",
+                                 f"Exec={command}\n",
+                                 f"Categories={categories}\n"
+                                 f"Terminal={str(launch_in_terminal).lower()}\n"
+                                 f"StartupNotify={str(send_notification).lower()}\n"
+                                 "Type=Application"])
+            except Exception as exception:
+                self.show_error(str(exception))
+            else:
+                self.show_message("Success", "Success")
+                self.clear_line_edits()
 
     def open_icon(self):
         filename, _ = QFileDialog.getOpenFileName(self, "Select icon")
